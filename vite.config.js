@@ -33,11 +33,19 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '@services': path.resolve(__dirname, './services'),
-            '@top': path.resolve(__dirname, './resources/views/Top_Management'),
+            '@services': path.resolve(import.meta.dirname, './services'),
+            '@top': path.resolve(import.meta.dirname, './resources/views/Top_Management'),
         },
     },
     server: {
+        host: '127.0.0.1',
+        port: 5173,
+        strictPort: true,
+        cors: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Private-Network': 'true',
+        },
         watch: {
             ignored: ['**/storage/framework/views/**'],
         },
